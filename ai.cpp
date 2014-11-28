@@ -102,6 +102,10 @@ bool AI::move(Unit& u, int x, int y) {
 
 // @static_game_unique
 void AI::PrintGameMap() {
+	for(int j = 0; j < board.width(); j++) {
+		std::cout << "==";
+	}
+	std::cout << std::endl;
 	for(int y = board.height()-1; y >= 0; y--) {
 		for(int x = 0; x < board.width(); x++) {
 			if(!Occupied(x, y)) {
@@ -112,4 +116,8 @@ void AI::PrintGameMap() {
 		}
 		std::cout << std::endl;
 	}
+	for(int j = 0; j < board.width(); j++) {
+		std::cout << "==";
+	}
+	std::cout << std::endl;
 }
