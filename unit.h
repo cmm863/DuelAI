@@ -22,7 +22,6 @@ public:
 	int type();
 	int moves_left();
 	int player_id();
-	int id();
 	string DebugString();
 };
 

@@ -11,12 +11,14 @@ private:
 	int PlayerID();
 	int TurnNumber();
 	bool InMapBounds(int x, int y);
-	bool Occupied(int x, int y);
+	static bool Occupied(int x, int y);
+	bool move(Unit& u, int x, int y);
 public:
 	AI(int player_id);
 	void init();
 	bool run();
 	void end();
+	static void PrintGameMap();
 };
 
 

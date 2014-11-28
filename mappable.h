@@ -11,6 +11,8 @@ public:
 	static int m_iterator;
 	int x();
 	int y();
+	int id();
+	Coordinate coordinate();
 };
 
 #endif

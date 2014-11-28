@@ -13,8 +13,7 @@ Unit::Unit(int x, int y, int type, int player_id) {
 }
 
 bool Unit::move(int x, int y) {
-	m_c.m_x = x;
-	m_c.m_y = y;
+	m_c = Coordinate(x, y);
 
 	return true;
 }
@@ -29,10 +28,6 @@ int Unit::moves_left() {
 
 int Unit::player_id() {
 	return m_player_id;
-}
-
-int Unit::id() {
-	return Mappable::m_id;
 }
 
 string Unit::DebugString() {

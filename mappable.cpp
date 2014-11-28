@@ -9,3 +9,11 @@ int Mappable::x() {
 int Mappable::y() {
 	return m_c.y();
 }
+
+int Mappable::id() {
+	return m_id;
+}
+
+Coordinate Mappable::coordinate() {
+	return m_c;
+}

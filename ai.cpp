@@ -13,14 +13,18 @@ void AI::init() {
 
 bool AI::run() {
 	// Spawn something
-	spawn(1, 1);
+	if(!Occupied(1, 1)) {
+		spawn(1, 1);
+	}
 
 	// Cycle through units
 	for(Unit &u : units) {
 		// If they're ours
 		if(u.player_id() == PlayerID()) {
 			// Move them to the right one
-			u.move(u.x() + 1, u.y());
+			if(!Occupied(u.x() + 1, u.y())) {
+				move(u, u.x() + 1, u.y());
+			}
 		}
 	}
 	return true;
@@ -39,11 +43,12 @@ void AI::spawn(int x, int y, int type) {
 		if(!Occupied(x, y)) {
 			Unit u = Unit(x, y, type, AI::m_player_id);
 			units.push_back(u);
+			m_unit_index_map[u.coordinate()] = units.size() - 1;
 		} else {
-			std::cerr << "--Spawn denied at X: " << x << ", Y: " << y << " (Occupied)" << std::endl;
+			std::cout << "--Spawn denied at X: " << x << ", Y: " << y << " (Occupied)" << std::endl;
 		}
 	} else {
-		std::cerr << "-- Spawn denied at X: " << x << ", Y: " << y << " (Out of Map)" << std::endl;
+		std::cout << "-- Spawn denied at X: " << x << ", Y: " << y << " (Out of Map)" << std::endl;
 	}
 	return;
 }
@@ -61,11 +66,35 @@ bool AI::InMapBounds(int x, int y) {
 }
 
 bool AI::Occupied(int x, int y) {
-	for(Unit &u : units) {
-		if(u.x() == x && u.y() == y) {
-			return true;
-		}
+	if(m_unit_index_map.find(Coordinate(x, y)) != m_unit_index_map.end()) {
+		return true;
 	}
 
 	return false;
+}
+
+bool AI::move(Unit& u, int x, int y) {
+	if(!Occupied(x, y)) {
+		Coordinate temp_coordinate = u.coordinate();
+		int index = m_unit_index_map[temp_coordinate];
+		m_unit_index_map.erase(temp_coordinate);
+		u.move(x, y);
+		m_unit_index_map[u.coordinate()] = index;
+		return true;
+	}
+	std::cout << "Move denied X: " << x << ", Y: " << y << " (Occupied)." << std::endl;
+	return false;
+}
+
+void AI::PrintGameMap() {
+	for(int y = board.height()-1; y >= 0; y--) {
+		for(int x = 0; x < board.width(); x++) {
+			if(!Occupied(x, y)) {
+				std::cout << ' ' << board.GetTileAt(x, y)->get_char();
+			} else {
+				std::cout << ' ' << 'x';
+			}
+		}
+		std::cout << std::endl;
+	}
 }

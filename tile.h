@@ -11,9 +11,12 @@
 class Tile : public Mappable {
 private:
 	int m_type;
+	char m_char;
 public:
 	Tile(int x = kUndefined, int y = kUndefined, int type = kUndefined);
 	int type();
+	void set_char(char c);
+	char get_char();
 };
 
 #endif
