@@ -28,7 +28,7 @@ bool AI::run() {
 
 void AI::end() {
 	if(PlayerID() == 1) {
-		for(Unit u : units) {
+		for(Unit &u : units) {
 			std::cout << u.DebugString() << std::endl;
 		}
 	}
