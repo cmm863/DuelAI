@@ -19,7 +19,7 @@
 ///						game state and objects in the game.
 /// @variables
 ///		@base_variables
-///			static map<Coordinate, int> m_unit_index_map;
+///			static map<Coordinate, int> m_unit_coordinate_index_map;
 ///			static vector<Unit> units;
 ///			static GameMap board;
 ///			static int m_turn_number;

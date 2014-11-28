@@ -62,7 +62,7 @@ bool AI::InMapBounds(int x, int y) {
 }
 
 bool AI::Occupied(int x, int y) {
-	if(m_unit_index_map.find(Coordinate(x, y)) != m_unit_index_map.end()) {
+	if(m_unit_coordinate_index_map.find(Coordinate(x, y)) != m_unit_coordinate_index_map.end()) {
 		return true;
 	}
 
@@ -75,7 +75,8 @@ void AI::spawn(int x, int y, int type) {
 		if(!Occupied(x, y)) {
 			Unit u = Unit(x, y, type, AI::m_player_id);
 			units.push_back(u);
-			m_unit_index_map[u.coordinate()] = units.size() - 1;
+			m_unit_id_index_map[u.id()] = units.size() - 1;
+			m_unit_coordinate_index_map[u.coordinate()] = units.size() - 1;
 		} else {
 			std::cout << "--Spawn denied at X: " << x << ", Y: " << y << " (Occupied)" << std::endl;
 		}
@@ -90,10 +91,10 @@ void AI::spawn(int x, int y, int type) {
 bool AI::move(Unit& u, int x, int y) {
 	if(!Occupied(x, y)) {
 		Coordinate temp_coordinate = u.coordinate();
-		int index = m_unit_index_map[temp_coordinate];
-		m_unit_index_map.erase(temp_coordinate);
+		int index = m_unit_coordinate_index_map[temp_coordinate];
+		m_unit_coordinate_index_map.erase(temp_coordinate);
 		u.move(x, y);
-		m_unit_index_map[u.coordinate()] = index;
+		m_unit_coordinate_index_map[u.coordinate()] = index;
 		return true;
 	}
 	std::cout << "Move denied X: " << x << ", Y: " << y << " (Occupied)." << std::endl;

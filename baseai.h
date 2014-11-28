@@ -21,8 +21,10 @@
 ///						of units, and the player_id for that player's ai.
 /// @variables
 ///		int m_player_id; This is the id of the player for this AI instance.
-///		static map<Coordinate, int> m_unit_index_map; This is a map from
+///		static map<Coordinate, int> m_unit_coordinate_index_map; This is a map from
 ///						each Coordinate to each unit's index in the units vector.
+///		static map<int, int> m_unit_id_index_map; This is the map from a Unit's
+///						id to it's index in the units vector.
 ///		static vector<Unit> units; This is the vector for all units in the game.
 ///						This persists across each player's AI to the other player's.
 ///		static GameMap board; This is the board. Persists across all AI's.
@@ -37,13 +39,15 @@ protected:
 	int m_player_id;
 
 	// @protected_static_variables
-	static map<Coordinate, int> m_unit_index_map;
+	static map<Coordinate, int> m_unit_coordinate_index_map;
+	static map<int, int> m_unit_id_index_map;
 	static vector<Unit> units;
 	static GameMap board;
 
 	// @protected_functions
 	// @protected_getters
 	Unit GetUnitAt(int x, int y);
+	Unit GetUnitFromID(int x);
 
 public:
 	// @public_variables
