@@ -35,30 +35,33 @@
 
 class BaseAI {
 protected:
-	// @protected_variables
-	int m_player_id;
+  // @protected_variables
+  int m_player_id;
 
-	// @protected_static_variables
-	static map<Coordinate, int> m_unit_coordinate_index_map;
-	static map<int, int> m_unit_id_index_map;
-	static vector<Unit> units;
-	static GameMap board;
+  // @protected_static_variables
+  static map<Coordinate, int> m_unit_coordinate_index_map;
+  static map<int, int> m_unit_id_index_map;
+  static vector<Unit> units;
+  static GameMap board;
 
-	// @protected_functions
-	// @protected_getters
-	Unit GetUnitAt(int x, int y);
-	Unit GetUnitFromID(int x);
+  // @protected_functions
+  // @protected_getters
+  Unit GetUnitAt(int x, int y);
+
+  Unit GetUnitFromID(int x);
 
 public:
-	// @public_variables
-	// @public_static_variables
-	static int m_turn_number;
+  // @public_variables
+  // @public_static_variables
+  static int m_turn_number;
 
-	// @public_functions
-	// @abstract_functions
-	virtual void init() = 0;
-	virtual bool run() = 0;
-	virtual void end() = 0;
+  // @public_functions
+  // @abstract_functions
+  virtual void init() = 0;
+
+  virtual bool run() = 0;
+
+  virtual void end() = 0;
 };
 
 

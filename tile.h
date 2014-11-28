@@ -27,17 +27,18 @@
 
 class Tile : public Mappable {
 private:
-	// @private_variables
-	int m_type;
-	char m_char;
+  // @private_variables
+  int m_type;
+  char m_char;
 public:
-	// @public_functions
-	// @constructors
-	Tile(int x = kUndefined, int y = kUndefined, int type = kUndefined);
+  // @public_functions
+  // @constructors
+  Tile(int x = kUndefined, int y = kUndefined, int type = kUndefined);
 
-	// @getters
-	int type();
-	char get_char();
+  // @getters
+  int type();
+
+  char get_char();
 };
 
 #endif

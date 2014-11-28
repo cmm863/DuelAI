@@ -9,21 +9,21 @@
 // @public_functions
 // @constructors
 Tile::Tile(int x, int y, int type) {
-	m_c.m_x = x;
-	m_c.m_y = y;
-	m_type = type;
-	m_id = m_iterator;
-	m_iterator++;
-	m_char = '.';
+  m_c.m_x = x;
+  m_c.m_y = y;
+  m_type = type;
+  m_id = m_iterator;
+  m_iterator++;
+  m_char = '.';
 
-	return;
+  return;
 }
 
 // @getters
 int Tile::type() {
-	return m_type;
+  return m_type;
 }
 
 char Tile::get_char() {
-	return m_char;
+  return m_char;
 }

@@ -18,7 +18,7 @@ int BaseAI::m_turn_number = 0;
 // @protected_functions
 // @protected_getters
 Unit BaseAI::GetUnitAt(int x, int y) {
-  return units[m_unit_coordinate_index_map.find(Coordinate(x,y))->second];
+  return units[m_unit_coordinate_index_map.find(Coordinate(x, y))->second];
 }
 
 Unit BaseAI::GetUnitFromID(int x) {

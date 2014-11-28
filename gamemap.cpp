@@ -9,41 +9,41 @@
 // @public_functions
 // @constructors
 GameMap::GameMap(const int width, const int height) {
-	m_width = width;
-	m_height = height;
+  m_width = width;
+  m_height = height;
 
-	// Allocate the memory
-	m_map = new Tile*[width];
-	for(int i = 0; i < width; i++) {
-		m_map[i] = new Tile[height];
-	}
+  // Allocate the memory
+  m_map = new Tile *[width];
+  for (int i = 0; i < width; i++) {
+    m_map[i] = new Tile[height];
+  }
 
-	// Set the tile information
-	for(int x = 0; x < width; x++) {
-		for(int y = 0; y < height; y++) {
-			m_map[x][y] = Tile(x, y);
-		}
-	}
+  // Set the tile information
+  for (int x = 0; x < width; x++) {
+    for (int y = 0; y < height; y++) {
+      m_map[x][y] = Tile(x, y);
+    }
+  }
 
-	return;
+  return;
 }
 
 GameMap::~GameMap() {
-	for(int i = 0; i < m_width; i++) {
-		delete [] m_map[i];
-	}
-	delete [] m_map;
+  for (int i = 0; i < m_width; i++) {
+    delete[] m_map[i];
+  }
+  delete[] m_map;
 }
 
 // @getters
 int GameMap::width() {
-	return m_width;
+  return m_width;
 }
 
 int GameMap::height() {
-	return m_height;
+  return m_height;
 }
 
-Tile* GameMap::GetTileAt(int x, int y) {
-	return &m_map[x][y];
+Tile *GameMap::GetTileAt(int x, int y) {
+  return &m_map[x][y];
 }

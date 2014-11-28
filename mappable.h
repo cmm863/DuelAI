@@ -22,20 +22,23 @@
 
 class Mappable {
 protected:
-	// @protected_variables
-	Coordinate m_c;
-	int m_id;
+  // @protected_variables
+  Coordinate m_c;
+  int m_id;
 public:
-	// @public_variables
-	// @static_variables
-	static int m_iterator;
+  // @public_variables
+  // @static_variables
+  static int m_iterator;
 
-	// @public_functions
-	// @getters
-	int x();
-	int y();
-	int id();
-	Coordinate coordinate();
+  // @public_functions
+  // @getters
+  int x();
+
+  int y();
+
+  int id();
+
+  Coordinate coordinate();
 };
 
 #endif

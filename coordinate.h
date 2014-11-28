@@ -24,15 +24,19 @@ public:
 
   // @public_functions
   // @constructors
-  Coordinate() : m_x(0), m_y(0) {}
-  Coordinate(int x, int y) : m_x(x), m_y(y) {}
+  Coordinate() : m_x(0), m_y(0) {
+  }
+
+  Coordinate(int x, int y) : m_x(x), m_y(y) {
+  }
 
   // @getters
   int x();
+
   int y();
 
   // @overloads
-  bool operator<(const Coordinate& c1) const;
+  bool operator<(const Coordinate &c1) const;
 };
 
 #endif

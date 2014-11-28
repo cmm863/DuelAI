@@ -30,19 +30,22 @@ using namespace std;
 
 class GameMap {
 private:
-	// @private_variables
-	Tile** m_map;
-	int m_width, m_height;
+  // @private_variables
+  Tile **m_map;
+  int m_width, m_height;
 public:
-	// @public_functions
-	// @constructors
-	GameMap(const int width = kMapWidth, const int height = kMapHeight);
-	~GameMap();
+  // @public_functions
+  // @constructors
+  GameMap(const int width = kMapWidth, const int height = kMapHeight);
 
-	// @getters
-	int width();
-	int height();
-	Tile* GetTileAt(int x, int y);
+  ~GameMap();
+
+  // @getters
+  int width();
+
+  int height();
+
+  Tile *GetTileAt(int x, int y);
 };
 
 #endif

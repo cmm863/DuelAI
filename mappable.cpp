@@ -12,17 +12,17 @@ int Mappable::m_iterator = 0;
 // @public_functions
 // @getters
 int Mappable::x() {
-	return m_c.x();
+  return m_c.x();
 }
 
 int Mappable::y() {
-	return m_c.y();
+  return m_c.y();
 }
 
 int Mappable::id() {
-	return m_id;
+  return m_id;
 }
 
 Coordinate Mappable::coordinate() {
-	return m_c;
+  return m_c;
 }

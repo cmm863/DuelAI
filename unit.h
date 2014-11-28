@@ -39,24 +39,27 @@ using namespace std;
 
 class Unit : public Mappable {
 private:
-	// @private_variables
-	int m_type;
-	int m_moves_left;
-	int m_player_id;
+  // @private_variables
+  int m_type;
+  int m_moves_left;
+  int m_player_id;
 
 public:
-	// @public_functions
-	// @constructors
-	Unit(int x = kUndefined, int y = kUndefined, int type = kUndefined, int player_id = kUndefined);
+  // @public_functions
+  // @constructors
+  Unit(int x = kUndefined, int y = kUndefined, int type = kUndefined, int player_id = kUndefined);
 
-	// @getters
-	int type();
-	int moves_left();
-	int player_id();
+  // @getters
+  int type();
 
-	// @unique
-	string DebugString();
-	bool move(int x, int y);
+  int moves_left();
+
+  int player_id();
+
+  // @unique
+  string DebugString();
+
+  bool move(int x, int y);
 };
 
 #endif

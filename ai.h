@@ -27,32 +27,37 @@
 
 class AI : public BaseAI {
 private:
-	// @private_functions
-	// @game_state_getters
-	int PlayerID();
-	int TurnNumber();
+  // @private_functions
+  // @game_state_getters
+  int PlayerID();
 
-	// @game_state_booleans
-	static bool Occupied(int x, int y);
-	bool InMapBounds(int x, int y);
+  int TurnNumber();
 
-	// @game_unique
-	void spawn(int x = kUndefined, int y = kUndefined, int type = kUndefined);
-	bool move(Unit& u, int x, int y);
+  // @game_state_booleans
+  static bool Occupied(int x, int y);
+
+  bool InMapBounds(int x, int y);
+
+  // @game_unique
+  void spawn(int x = kUndefined, int y = kUndefined, int type = kUndefined);
+
+  bool move(Unit &u, int x, int y);
+
 public:
-	// @public_functions
-	// @constructors
-	AI(int player_id);
+  // @public_functions
+  // @constructors
+  AI(int player_id);
 
-	// @game_runners
-	void init();
-	bool run();
-	void end();
+  // @game_runners
+  void init();
 
-	// @static_game_unique
-	static void PrintGameMap();
+  bool run();
+
+  void end();
+
+  // @static_game_unique
+  static void PrintGameMap();
 };
-
 
 
 #endif
