@@ -7,6 +7,7 @@
 // Standard library imports
 #include <iostream>
 #include <vector>
+#include <ctime>
 
 // Game imports
 #include "ai.h"
@@ -14,6 +15,9 @@
 using namespace std;
 
 int main() {
+  // Set Up Timer
+  clock_t begin = clock();
+
   // Declare the players
   vector<AI> players;
 
@@ -27,7 +31,7 @@ int main() {
   }
 
   // For x turns for each player, run()
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < kHalfTurnNumbers; i++) {
     for (AI &p : players) {
       p.run();
       BaseAI::m_turn_number++;
@@ -38,6 +42,10 @@ int main() {
   for (AI &p : players) {
     p.end();
   }
+
+  // End clock & output
+  clock_t end = clock();
+  std::cout << "Time: " << double(end - begin) / CLOCKS_PER_SEC << std::endl;
 
   return 0;
 }

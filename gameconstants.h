@@ -9,6 +9,7 @@
 
 // Global constants
 const int kUndefined = -1;
+const int kHalfTurnNumbers = 10;
 
 // Game Board constants
 const int kMapWidth = 20;
