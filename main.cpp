@@ -15,7 +15,7 @@ int main() {
 	// Init()
 	player_one.init();
 	player_two.init();
-	for(int i = 0; i < 10; i++) {
+	for(int i = 0; i < 5; i++) {
 		// Player one has his turn
 		player_one.run();
 		BaseAI::turn_number++;

@@ -18,10 +18,11 @@ private:
 
 public:
 	Unit(int x = kUndefined, int y = kUndefined, int type = kUndefined, int player_id = kUndefined);
-	bool Move(int x, int y);
+	bool move(int x, int y);
 	int type();
 	int moves_left();
 	int player_id();
+	int id();
 	string DebugString();
 };
 

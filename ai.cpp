@@ -12,14 +12,25 @@ void AI::init() {
 }
 
 bool AI::run() {
+	// Spawn something
 	spawn();
 
+	// Cycle through units
+	for(Unit &u : units) {
+		// If they're ours
+		if(u.player_id() == PlayerID()) {
+			// Move them to the right one
+			u.move(u.x() + 1, u.y());
+		}
+	}
 	return true;
 }
 
 void AI::end() {
-	for(Unit u : units) {
-		std::cout << u.DebugString() << std::endl;
+	if(PlayerID() == 1) {
+		for(Unit u : units) {
+			std::cout << u.DebugString() << std::endl;
+		}
 	}
 	return;
 }
