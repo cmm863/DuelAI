@@ -46,7 +46,7 @@ protected:
 
   // @protected_functions
   // @protected_getters
-  Unit GetUnitAt(int x, int y);
+  static Unit GetUnitAt(int x, int y);
 
   Unit GetUnitFromID(int x);
 

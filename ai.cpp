@@ -133,7 +133,8 @@ void AI::PrintGameMap() {
       if (!Occupied(x, y)) {
         std::cout << ' ' << board.GetTileAt(x, y)->get_char();
       } else {
-        std::cout << ' ' << 'x';
+        Unit temp_unit = GetUnitAt(x, y);
+        std::cout << ' ' << temp_unit.player_id();
       }
     }
     std::cout << std::endl;
