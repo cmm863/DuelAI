@@ -26,8 +26,6 @@ using namespace std;
 ///						m_map[x][y].
 ///		int m_width; Width of the map.
 ///		int m_height; Height of the map.
-/// @functions
-///		void DebugString(); Currently prints the map. @TODO: Remove DebugString()
 //////////////////////////////////////////////////////////////////////
 
 class GameMap {
@@ -45,9 +43,6 @@ public:
 	int width();
 	int height();
 	Tile* GetTileAt(int x, int y);
-
-	// @unique
-	void DebugString();
 };
 
 #endif

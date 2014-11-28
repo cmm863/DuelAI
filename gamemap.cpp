@@ -47,15 +47,3 @@ int GameMap::height() {
 Tile* GameMap::GetTileAt(int x, int y) {
 	return &m_map[x][y];
 }
-
-// @unique
-void GameMap::DebugString() {
-	for(int y = m_height-1; y >= 0; y--) {
-		for(int x = 0; x < m_width; x++) {
-			cout << " .";
-		}
-		cout << endl;
-	}
-
-	return;
-}
