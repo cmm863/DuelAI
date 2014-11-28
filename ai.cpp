@@ -45,3 +45,7 @@ void AI::spawn(int x, int y, int type) {
 int AI::PlayerID() {
 	return m_player_id;
 }
+
+int AI::TurnNumber() {
+	return BaseAI::m_turn_number;
+}

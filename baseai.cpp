@@ -4,4 +4,4 @@ vector<Unit> BaseAI::units = vector<Unit>();
 
 GameMap BaseAI::board = GameMap();
 
-int BaseAI::turn_number = 0;
+int BaseAI::m_turn_number = 0;

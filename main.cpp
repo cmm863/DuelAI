@@ -18,11 +18,11 @@ int main() {
 	for(int i = 0; i < 5; i++) {
 		// Player one has his turn
 		player_one.run();
-		BaseAI::turn_number++;
+		BaseAI::m_turn_number++;
 
 		// Player two has his turn
 		player_two.run();
-		BaseAI::turn_number++;
+		BaseAI::m_turn_number++;
 	}
 
 	// End()

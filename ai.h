@@ -9,6 +9,7 @@ private:
 	int m_player_id;
 	void spawn(int x = kUndefined, int y = kUndefined, int type = kUndefined);
 	int PlayerID();
+	int TurnNumber();
 public:
 	AI(int player_id);
 	void init();

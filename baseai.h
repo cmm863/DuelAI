@@ -13,7 +13,7 @@ protected:
 public:
 	static vector<Unit> units;
 	static GameMap board;
-	static int turn_number;
+	static int m_turn_number;
 	virtual void init() = 0;
 	virtual bool run() = 0;
 	virtual void end() = 0;
