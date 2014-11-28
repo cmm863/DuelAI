@@ -35,13 +35,16 @@ private:
 
   // @game_state_booleans
   static bool Occupied(int x, int y);
+  static bool Occupied(Coordinate c);
 
   bool InMapBounds(int x, int y);
+  bool InMapBounds(Coordinate c);
 
   // @game_unique
   void spawn(int x = kUndefined, int y = kUndefined, int type = kUndefined);
 
   bool move(Unit &u, int x, int y);
+  bool move(Unit &u, Coordinate c);
 
 public:
   // @public_functions

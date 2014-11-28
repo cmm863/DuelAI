@@ -30,9 +30,19 @@ bool AI::run() {
   for (Unit &u : units) {
     // If they're ours
     if (u.player_id() == PlayerID()) {
+      // Create a vector with each direction for the unit
+      vector<Coordinate> each_direction;
+      each_direction.push_back(Coordinate(u.x() + 1, u.y())); // East
+      each_direction.push_back(Coordinate(u.x() - 1, u.y())); // West
+      each_direction.push_back(Coordinate(u.x(), u.y() + 1)); // North
+      each_direction.push_back(Coordinate(u.x(), u.y() - 1)); // South
+
       // Move them to the right one
-      if (!Occupied(u.x() + 1, u.y())) {
-        move(u, u.x() + 1, u.y());
+      for(Coordinate c : each_direction) {
+        if(!Occupied(c) && InMapBounds(c)) {
+          move(u, c);
+          break;
+        }
       }
     }
   }
@@ -57,16 +67,24 @@ int AI::TurnNumber() {
 }
 
 // @game_state_booleans
-bool AI::InMapBounds(int x, int y) {
-  return (x >= 0 && x < kMapWidth && y >= 0 && y < kMapHeight);
-}
-
 bool AI::Occupied(int x, int y) {
   if (m_unit_coordinate_index_map.find(Coordinate(x, y)) != m_unit_coordinate_index_map.end()) {
     return true;
   }
 
   return false;
+}
+
+bool AI::Occupied(Coordinate c) {
+  return Occupied(c.x(), c.y());
+}
+
+bool AI::InMapBounds(int x, int y) {
+  return (x >= 0 && x < kMapWidth && y >= 0 && y < kMapHeight);
+}
+
+bool AI::InMapBounds(Coordinate c) {
+  return InMapBounds(c.x(), c.y());
 }
 
 // @game_unique
@@ -98,6 +116,10 @@ bool AI::move(Unit &u, int x, int y) {
   }
   std::cout << "--Move denied X: " << x << ", Y: " << y << " (Occupied)." << std::endl;
   return false;
+}
+
+bool AI::move(Unit &u, Coordinate c) {
+  return move(u, c.x(), c.y());
 }
 
 // @static_game_unique
