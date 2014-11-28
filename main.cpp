@@ -8,25 +8,25 @@
 using namespace std;
 
 int main() {
-	// CURRENTLY TESTING OUT THE SPAWN.
-	AI player_one = AI(1);
-	AI player_two = AI(2);
+	vector<AI> players;
+
+	players.push_back(AI(1));
+	players.push_back(AI(2));
 
 	// Init()
-	player_one.init();
-	player_two.init();
-	for(int i = 0; i < 5; i++) {
-		// Player one has his turn
-		player_one.run();
-		BaseAI::m_turn_number++;
-
-		// Player two has his turn
-		player_two.run();
-		BaseAI::m_turn_number++;
+	for(AI &p : players) {
+		p.init();
 	}
-
+	// Turns (run())
+	for(int i = 0; i < 5; i++) {
+		for(AI &p : players) {
+			p.run();
+			BaseAI::m_turn_number++;
+		}
+	}
 	// End()
-	player_one.end();
-	player_two.end();
+	for(AI &p : players) {
+		p.end();
+	}
 	return 0;
 }
