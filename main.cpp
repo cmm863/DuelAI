@@ -7,7 +7,6 @@
 // Standard library imports
 #include <iostream>
 #include <vector>
-#include <ctime>
 
 // Game imports
 #include "ai.h"
