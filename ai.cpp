@@ -96,7 +96,7 @@ bool AI::move(Unit &u, int x, int y) {
     m_unit_coordinate_index_map[u.coordinate()] = index;
     return true;
   }
-  std::cout << "Move denied X: " << x << ", Y: " << y << " (Occupied)." << std::endl;
+  std::cout << "--Move denied X: " << x << ", Y: " << y << " (Occupied)." << std::endl;
   return false;
 }
 
