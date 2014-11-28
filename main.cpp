@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////////////////////
+/// @file main.cpp
+/// @author Connor McBride
+/// @brief Runs the game.
+//////////////////////////////////////////////////////////////////////
+
 // Standard library imports
 #include <iostream>
 #include <vector>
@@ -9,16 +15,19 @@
 using namespace std;
 
 int main() {
+	// Declare the players
 	vector<AI> players;
 
+	// Initialize all that are playing
 	players.push_back(AI(1));
 	players.push_back(AI(2));
 
-	// Init()
+	// For each player, init()
 	for(AI &p : players) {
 		p.init();
 	}
-	// Turns (run())
+
+	// For x turns for each player, run()
 	for(int i = 0; i < 5; i++) {
 		for(AI &p : players) {
 			p.run();
@@ -26,7 +35,7 @@ int main() {
 		}
 		AI::PrintGameMap();
 	}
-	// End()
+	// For each player, end()
 	for(AI &p : players) {
 		p.end();
 	}

@@ -1,5 +1,13 @@
+//////////////////////////////////////////////////////////////////////
+/// @file gamemap.cpp
+/// @author Connor McBride
+/// @brief Contains definition information for the GameMap class.
+//////////////////////////////////////////////////////////////////////
+
 #include "gamemap.h"
 
+// @public_functions
+// @constructors
 GameMap::GameMap(const int width, const int height) {
 	m_width = width;
 	m_height = height;
@@ -27,6 +35,20 @@ GameMap::~GameMap() {
 	delete [] m_map;
 }
 
+// @getters
+int GameMap::width() {
+	return m_width;
+}
+
+int GameMap::height() {
+	return m_height;
+}
+
+Tile* GameMap::GetTileAt(int x, int y) {
+	return &m_map[x][y];
+}
+
+// @unique
 void GameMap::DebugString() {
 	for(int y = m_height-1; y >= 0; y--) {
 		for(int x = 0; x < m_width; x++) {
@@ -36,16 +58,4 @@ void GameMap::DebugString() {
 	}
 
 	return;
-}
-
-Tile* GameMap::GetTileAt(int x, int y) {
-	return &m_map[x][y];
-}
-
-int GameMap::width() {
-	return m_width;
-}
-
-int GameMap::height() {
-	return m_height;
 }

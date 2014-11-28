@@ -1,7 +1,16 @@
+//////////////////////////////////////////////////////////////////////
+/// @file mappable.cpp
+/// @author Connor McBride
+/// @brief Contains definition information for the mappable class.
+//////////////////////////////////////////////////////////////////////
+
 #include "mappable.h"
 
+// @static_variables
 int Mappable::m_iterator = 0;
 
+// @public_functions
+// @getters
 int Mappable::x() {
 	return m_c.x();
 }

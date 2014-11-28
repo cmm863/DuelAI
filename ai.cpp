@@ -1,11 +1,20 @@
+//////////////////////////////////////////////////////////////////////
+/// @file ai.cpp
+/// @author Connor McBride
+/// @brief Contains definition information for the AI class.
+//////////////////////////////////////////////////////////////////////
+
 #include "ai.h"
 
+// @public_functions
+// @constructors
 AI::AI(int player_id) {
 	m_player_id = player_id;
 
 	return;
 }
 
+// @game_runners
 void AI::init() {
 
 	return;
@@ -38,6 +47,29 @@ void AI::end() {
 	return;
 }
 
+// @game_state_getters
+int AI::PlayerID() {
+	return m_player_id;
+}
+
+int AI::TurnNumber() {
+	return BaseAI::m_turn_number;
+}
+
+// @game_state_booleans
+bool AI::InMapBounds(int x, int y) {
+	return (x >= 0 && x < kMapWidth && y >= 0 && y < kMapHeight);
+}
+
+bool AI::Occupied(int x, int y) {
+	if(m_unit_index_map.find(Coordinate(x, y)) != m_unit_index_map.end()) {
+		return true;
+	}
+
+	return false;
+}
+
+// @game_unique
 void AI::spawn(int x, int y, int type) {
 	if(InMapBounds(x, y)) {
 		if(!Occupied(x, y)) {
@@ -53,25 +85,7 @@ void AI::spawn(int x, int y, int type) {
 	return;
 }
 
-int AI::PlayerID() {
-	return m_player_id;
-}
 
-int AI::TurnNumber() {
-	return BaseAI::m_turn_number;
-}
-
-bool AI::InMapBounds(int x, int y) {
-	return (x >= 0 && x < kMapWidth && y >= 0 && y < kMapHeight);
-}
-
-bool AI::Occupied(int x, int y) {
-	if(m_unit_index_map.find(Coordinate(x, y)) != m_unit_index_map.end()) {
-		return true;
-	}
-
-	return false;
-}
 
 bool AI::move(Unit& u, int x, int y) {
 	if(!Occupied(x, y)) {
@@ -86,6 +100,7 @@ bool AI::move(Unit& u, int x, int y) {
 	return false;
 }
 
+// @static_game_unique
 void AI::PrintGameMap() {
 	for(int y = board.height()-1; y >= 0; y--) {
 		for(int x = 0; x < board.width(); x++) {

@@ -1,5 +1,13 @@
+//////////////////////////////////////////////////////////////////////
+/// @file tile.cpp
+/// @author Connor McBride
+/// @brief Contains definition information for the tile class.
+//////////////////////////////////////////////////////////////////////
+
 #include "tile.h"
 
+// @public_functions
+// @constructors
 Tile::Tile(int x, int y, int type) {
 	m_c.m_x = x;
 	m_c.m_y = y;
@@ -11,12 +19,9 @@ Tile::Tile(int x, int y, int type) {
 	return;
 }
 
+// @getters
 int Tile::type() {
 	return m_type;
-}
-
-void Tile::set_char(char c) {
-	m_char = c;
 }
 
 char Tile::get_char() {
