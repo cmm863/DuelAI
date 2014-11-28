@@ -4,6 +4,7 @@
 
 // Game imports
 #include "ai.h"
+#include "coordinate.h"
 
 using namespace std;
 
@@ -28,5 +29,6 @@ int main() {
 	for(AI &p : players) {
 		p.end();
 	}
+
 	return 0;
 }

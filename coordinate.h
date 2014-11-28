@@ -2,10 +2,9 @@
 #define COORDINATE_H
 
 class Coordinate {
-private:
+public:
   int m_x;
   int m_y;
-public:
   // Functions
   Coordinate() : m_x(0), m_y(0) {}
   Coordinate(int x, int y) : m_x(x), m_y(y) {}
