@@ -49,6 +49,7 @@ void GameStateHandler::SerializeGameState(vector<Tile> map, vector<Unit> units, 
   ph.AddFileOutput("current_turn.dat");
   ph.OverwriteOutputs(game_turn);
 
+  // Delete all proto stuff.
   google::protobuf::ShutdownProtobufLibrary();
 
   return;
