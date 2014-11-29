@@ -16,8 +16,9 @@ message Unit {
 }
 
 message Tile {
-	required int32 type = 1;
-	required string c = 2;
+	required Mappable m = 1;
+	required int32 type = 2;
+	required string c = 3;
 }
 
 message Turn {
