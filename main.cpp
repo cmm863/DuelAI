@@ -9,13 +9,13 @@
 #include <vector>
 
 // Game imports
-#include "gamestatehandler.h"
+#include "ai.h"
 
 using namespace std;
 
 int main() {
   // Clear Gamelogs
-  GameStateHandler::ClearGameStateFiles();
+  //GameStateHandler::ClearGameStateFiles();
   // Set Up Timer
   clock_t begin = clock();
   // Declare the players
@@ -35,7 +35,7 @@ int main() {
     for (AI &p : players) {
       p.run();
       BaseAI::m_turn_number++;
-      GameStateHandler::SerializeGameState(BaseAI::tiles, BaseAI::units, BaseAI::m_turn_number, Mappable::m_iterator);
+      //GameStateHandler::SerializeGameState(BaseAI::tiles, BaseAI::units, BaseAI::m_turn_number, Mappable::m_iterator);
     }
   }
   // For each player, end()
