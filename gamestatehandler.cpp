@@ -1,7 +1,9 @@
 #include "gamestatehandler.h"
 
 void GameStateHandler::SerializeGameState(vector<Tile> map, vector<Unit> units, int turn_number, int id_iterator) {
+  ProtoHandler ph = ProtoHandler();
   ProtoGameState::Turn game_turn;
+  ProtoGameState::Turn copy_turn;
   // Load the units
   for(Unit &u : units) {
     // Initialize proto classes
@@ -43,7 +45,11 @@ void GameStateHandler::SerializeGameState(vector<Tile> map, vector<Unit> units, 
   game_turn.set_turn_number(turn_number);
   game_turn.set_id_iterator(id_iterator);
 
+  // Write to file
+  ph.AddFileOutput("current_turn.dat");
+  ph.OverwriteOutputs(game_turn);
 
+  google::protobuf::ShutdownProtobufLibrary();
 
   return;
 }
