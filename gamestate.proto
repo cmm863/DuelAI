@@ -1,30 +1,30 @@
-message Coordinate {
+message ProtoCoordinate {
 	required int32 x = 1;
 	required int32 y = 2;
 }
 
-message Mappable {
-	required Coordinate c = 1;
+message ProtoMappable {
+	required ProtoCoordinate c = 1;
 	required int32 id = 2;
 }
 
-message Unit {
-	required Mappable m = 1;
+message ProtoUnit {
+	required ProtoMappable m = 1;
 	required int32 p_id = 2;
 }
 
-message Tile {
+message ProtoTile {
 	required int32 type = 1;
 	required string c = 2;
 }
 
-message Turn {
-	repeated Unit units = 1;
-	repeated Tile tiles = 2;
+message ProtoTurn {
+	repeated ProtoUnit units = 1;
+	repeated ProtoTile tiles = 2;
 	required int32 turn_number = 3;
 	required int32 id_iterator = 4;
 }
 
-message Game {
-	repeated Turn turns = 1;
+message ProtoGame {
+	repeated ProtoTurn turns = 1;
 }

@@ -10,13 +10,13 @@
 
 // Game imports
 #include "ai.h"
+#include "gamestate.pb.h"
 
 using namespace std;
 
 int main() {
   // Set Up Timer
   clock_t begin = clock();
-
   // Declare the players
   vector<AI> players;
 
