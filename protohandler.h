@@ -33,7 +33,7 @@ void ProtoHandler::OverwriteOutputs(const T &proto) {
 
 template <typename T>
 void ProtoHandler::AppendToOutputs(const T &proto) {
-  fstream output(file_output, ios::out | ios::ate | ios::binary);
+  fstream output(file_output, ios::out | ios::app | ios::binary);
   proto.SerializeToOstream(&output);
   return;
 }

@@ -14,6 +14,8 @@
 using namespace std;
 
 int main() {
+  // Clear Gamelogs
+  GameStateHandler::ClearGameStateFiles();
   // Set Up Timer
   clock_t begin = clock();
   // Declare the players
@@ -41,7 +43,6 @@ int main() {
     p.end();
   }
 
-  GameStateHandler::ClearGameStateFiles();
   // End clock & output
   clock_t end = clock();
   std::cout << "Time: " << double(end - begin) / CLOCKS_PER_SEC << std::endl;

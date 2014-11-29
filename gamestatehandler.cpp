@@ -9,8 +9,6 @@ void GameStateHandler::SerializeGameState(const vector<Tile> map, const vector<U
   ProtoGameState::Coordinate * proto_coordinate = nullptr;
   ProtoGameState::Tile * proto_tile = nullptr;
 
-  ph.AddFileInput("gamelog.dat");
-  ph.LoadInputTo(full_game);
   game_turn = full_game.add_turns();
 
   // Load the units
