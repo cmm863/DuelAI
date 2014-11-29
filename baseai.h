@@ -12,7 +12,7 @@
 #include <map>
 
 // Game imports
-#include "gamemap.h"
+#include "tile.h"
 
 //////////////////////////////////////////////////////////////////////
 /// @class BaseAI
@@ -42,13 +42,17 @@ protected:
   static map<Coordinate, int> m_unit_coordinate_index_map;
   static map<int, int> m_unit_id_index_map;
   static vector<Unit> units;
-  static GameMap board;
+  static vector<Tile> tiles;
 
   // @protected_functions
   // @protected_getters
   static Unit GetUnitAt(int x, int y);
+  static Tile GetTileAt(int x, int y);
 
   Unit GetUnitFromID(int x);
+
+  static int MapHeight();
+  static int MapWidth();
 
 public:
   // @public_variables

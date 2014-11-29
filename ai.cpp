@@ -121,14 +121,14 @@ bool AI::move(Unit &u, Coordinate c) {
 
 // @static_game_unique
 void AI::PrintGameMap() {
-  for (int j = 0; j < board.width(); j++) {
+  for (int j = 0; j < MapWidth(); j++) {
     std::cout << "==";
   }
   std::cout << std::endl;
-  for (int y = board.height() - 1; y >= 0; y--) {
-    for (int x = 0; x < board.width(); x++) {
+  for (int y = MapHeight() - 1; y >= 0; y--) {
+    for (int x = 0; x < MapWidth(); x++) {
       if (!Occupied(x, y)) {
-        std::cout << ' ' << board.GetTileAt(x, y)->get_char();
+        std::cout << ' ' << GetTileAt(x, y).get_char();
       } else {
         Unit temp_unit = GetUnitAt(x, y);
         std::cout << ' ' << temp_unit.player_id();
@@ -136,7 +136,7 @@ void AI::PrintGameMap() {
     }
     std::cout << std::endl;
   }
-  for (int j = 0; j < board.width(); j++) {
+  for (int j = 0; j < MapWidth(); j++) {
     std::cout << "==";
   }
   std::cout << std::endl;
