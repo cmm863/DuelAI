@@ -34,8 +34,8 @@ int main() {
     for (AI &p : players) {
       p.run();
       BaseAI::m_turn_number++;
+      AI::PrintGameMap();
     }
-    AI::PrintGameMap();
   }
   // For each player, end()
   for (AI &p : players) {

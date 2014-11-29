@@ -50,10 +50,7 @@ bool AI::run() {
 }
 
 void AI::end() {
-  for (Unit &u : units) {
-    if (PlayerID() == u.player_id())
-      std::cout << u.DebugString() << std::endl;
-  }
+
   return;
 }
 
@@ -93,8 +90,8 @@ void AI::spawn(int x, int y, int type) {
     if (!Occupied(x, y)) {
       Unit u = Unit(x, y, type, AI::m_player_id);
       units.push_back(u);
-      m_unit_id_index_map[u.id()] = units.size() - 1;
-      m_unit_coordinate_index_map[u.coordinate()] = units.size() - 1;
+      m_unit_id_index_map[u.id()] = static_cast<int>(units.size()) - 1;
+      m_unit_coordinate_index_map[u.coordinate()] = static_cast<int>(units.size()) - 1;
     } else {
       std::cout << "--Spawn denied at X: " << x << ", Y: " << y << " (Occupied)" << std::endl;
     }
