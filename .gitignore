@@ -1,6 +1,5 @@
 .DS_Store
 .idea/*
-CMakeLists.txt
 run
 *.pb.h
 *.pb.cc
