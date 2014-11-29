@@ -2,16 +2,21 @@
 
 void GameStateHandler::SerializeGameState(const vector<Tile> map, const vector<Unit> units, int turn_number, int id_iterator) {
   ProtoHandler ph = ProtoHandler();
-  ProtoGameState::Turn game_turn;
+  ProtoGameState::Game full_game;
+  ProtoGameState::Turn * game_turn = nullptr;
   ProtoGameState::Unit * proto_unit = nullptr;
   ProtoGameState::Mappable * proto_mappable = nullptr;
   ProtoGameState::Coordinate * proto_coordinate = nullptr;
   ProtoGameState::Tile * proto_tile = nullptr;
 
+  ph.AddFileInput("gamelog.dat");
+  ph.LoadInputTo(full_game);
+  game_turn = full_game.add_turns();
+
   // Load the units
   for(const Unit &u : units) {
     // Initialize proto classes
-    proto_unit = game_turn.add_units();
+    proto_unit = game_turn->add_units();
     proto_mappable = proto_unit->mutable_m();
     proto_coordinate = proto_mappable->mutable_c();
 
@@ -29,7 +34,7 @@ void GameStateHandler::SerializeGameState(const vector<Tile> map, const vector<U
   // Load the map
   for(const Tile &t : map) {
     // Initialize proto classes
-    proto_tile = game_turn.add_tiles();
+    proto_tile = game_turn->add_tiles();
     proto_mappable = proto_tile->mutable_m();
     proto_coordinate = proto_mappable->mutable_c();
 
@@ -46,14 +51,21 @@ void GameStateHandler::SerializeGameState(const vector<Tile> map, const vector<U
   }
 
   // Set the global static variables
-  game_turn.set_turn_number(turn_number);
-  game_turn.set_id_iterator(id_iterator);
+  game_turn->set_turn_number(turn_number);
+  game_turn->set_id_iterator(id_iterator);
 
   // Write to file
   ph.AddFileOutput("current_turn.dat");
-  ph.OverwriteOutputs(game_turn);
+  ph.OverwriteOutputs(*game_turn);
 
-  std::cout << game_turn.DebugString() << std::endl;
+  ph.AddFileOutput("gamelog.dat");
+  ph.AppendToOutputs(full_game);
+
+  return;
+}
+
+void GameStateHandler::ClearGameStateFiles() {
+  fstream output("gamelog.dat", ios::out | ios::trunc);
 
   return;
 }

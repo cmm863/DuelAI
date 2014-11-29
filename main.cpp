@@ -41,6 +41,7 @@ int main() {
     p.end();
   }
 
+  GameStateHandler::ClearGameStateFiles();
   // End clock & output
   clock_t end = clock();
   std::cout << "Time: " << double(end - begin) / CLOCKS_PER_SEC << std::endl;

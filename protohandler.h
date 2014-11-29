@@ -27,7 +27,7 @@ public:
 template <typename T>
 void ProtoHandler::OverwriteOutputs(const T &proto) {
   fstream output(file_output, ios::out | ios::trunc | ios::binary);
-  // std::cout << proto.SerializeToOstream(&output) << std::endl;
+  proto.SerializeToOstream(&output);
   return;
 }
 
