@@ -41,8 +41,7 @@ protected:
   // @protected_static_variables
   static map<Coordinate, int> m_unit_coordinate_index_map;
   static map<int, int> m_unit_id_index_map;
-  static vector<Unit> units;
-  static vector<Tile> tiles;
+
 
   // @protected_functions
   // @protected_getters
@@ -58,6 +57,9 @@ public:
   // @public_variables
   // @public_static_variables
   static int m_turn_number;
+
+  static vector<Unit> units;
+  static vector<Tile> tiles;
 
   // @public_functions
   // @abstract_functions
