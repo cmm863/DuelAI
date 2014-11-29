@@ -36,9 +36,9 @@ public:
   Tile(int x = kUndefined, int y = kUndefined, int type = kUndefined);
 
   // @getters
-  int type();
+  int type() const;
 
-  char get_char();
+  char get_char() const;
 };
 
 #endif

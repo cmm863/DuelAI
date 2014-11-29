@@ -32,11 +32,11 @@ public:
 
   // @public_functions
   // @getters
-  int x();
+  int x() const;
 
-  int y();
+  int y() const;
 
-  int id();
+  int id() const;
 
   Coordinate coordinate();
 };

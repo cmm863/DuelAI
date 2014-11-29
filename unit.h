@@ -54,7 +54,7 @@ public:
 
   int moves_left();
 
-  int player_id();
+  int player_id() const ;
 
   // @unique
   string DebugString();

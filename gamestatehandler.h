@@ -10,7 +10,7 @@
 
 class GameStateHandler {
 public:
-  static void SerializeGameState(vector<Tile> map, vector<Unit> units, int turn_number, int id_iterator);
+  static void SerializeGameState(const vector<Tile> map, const vector<Unit> units, int turn_number, int id_iterator);
 };
 
 #endif

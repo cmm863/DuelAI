@@ -20,10 +20,10 @@ Tile::Tile(int x, int y, int type) {
 }
 
 // @getters
-int Tile::type() {
+int Tile::type() const {
   return m_type;
 }
 
-char Tile::get_char() {
+char Tile::get_char() const {
   return m_char;
 }

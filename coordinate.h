@@ -31,9 +31,9 @@ public:
   }
 
   // @getters
-  int x();
+  int x() const;
 
-  int y();
+  int y() const;
 
   // @overloads
   bool operator<(const Coordinate &c1) const;

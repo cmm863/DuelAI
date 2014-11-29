@@ -11,15 +11,15 @@ int Mappable::m_iterator = 0;
 
 // @public_functions
 // @getters
-int Mappable::x() {
+int Mappable::x() const {
   return m_c.x();
 }
 
-int Mappable::y() {
+int Mappable::y() const {
   return m_c.y();
 }
 
-int Mappable::id() {
+int Mappable::id() const {
   return m_id;
 }
 

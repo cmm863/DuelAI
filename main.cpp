@@ -33,14 +33,13 @@ int main() {
     for (AI &p : players) {
       p.run();
       BaseAI::m_turn_number++;
+      GameStateHandler::SerializeGameState(BaseAI::tiles, BaseAI::units, BaseAI::m_turn_number, Mappable::m_iterator);
     }
   }
   // For each player, end()
   for (AI &p : players) {
     p.end();
   }
-
-  GameStateHandler::SerializeGameState(BaseAI::tiles, BaseAI::units, BaseAI::m_turn_number, Mappable::m_iterator);
 
   // End clock & output
   clock_t end = clock();

@@ -2,6 +2,7 @@
 #define PROTOHANDLER_H
 
 #include <fstream>
+#include <iostream>
 #include "gamestate.pb.h"
 
 
@@ -26,7 +27,7 @@ public:
 template <typename T>
 void ProtoHandler::OverwriteOutputs(const T &proto) {
   fstream output(file_output, ios::out | ios::trunc | ios::binary);
-  proto.SerializeToOstream(&output);
+  // std::cout << proto.SerializeToOstream(&output) << std::endl;
   return;
 }
 

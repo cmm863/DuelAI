@@ -1,15 +1,19 @@
 #include "gamestatehandler.h"
 
-void GameStateHandler::SerializeGameState(vector<Tile> map, vector<Unit> units, int turn_number, int id_iterator) {
+void GameStateHandler::SerializeGameState(const vector<Tile> map, const vector<Unit> units, int turn_number, int id_iterator) {
   ProtoHandler ph = ProtoHandler();
   ProtoGameState::Turn game_turn;
-  ProtoGameState::Turn copy_turn;
+  ProtoGameState::Unit * proto_unit = nullptr;
+  ProtoGameState::Mappable * proto_mappable = nullptr;
+  ProtoGameState::Coordinate * proto_coordinate = nullptr;
+  ProtoGameState::Tile * proto_tile = nullptr;
+
   // Load the units
-  for(Unit &u : units) {
+  for(const Unit &u : units) {
     // Initialize proto classes
-    ProtoGameState::Unit * proto_unit = game_turn.add_units();
-    ProtoGameState::Mappable * proto_mappable(proto_unit->mutable_m());
-    ProtoGameState::Coordinate * proto_coordinate(proto_mappable->mutable_c());
+    proto_unit = game_turn.add_units();
+    proto_mappable = proto_unit->mutable_m();
+    proto_coordinate = proto_mappable->mutable_c();
 
     // Set Coordinate
     proto_coordinate->set_x(u.x());
@@ -23,11 +27,11 @@ void GameStateHandler::SerializeGameState(vector<Tile> map, vector<Unit> units, 
   }
 
   // Load the map
-  for(Tile &t : map) {
+  for(const Tile &t : map) {
     // Initialize proto classes
-    ProtoGameState::Tile * proto_tile = game_turn.add_tiles();
-    ProtoGameState::Mappable * proto_mappable(proto_tile->mutable_m());
-    ProtoGameState::Coordinate * proto_coordinate(proto_mappable->mutable_c());
+    proto_tile = game_turn.add_tiles();
+    proto_mappable = proto_tile->mutable_m();
+    proto_coordinate = proto_mappable->mutable_c();
 
     // Set Coordinate
     proto_coordinate->set_x(t.x());
@@ -50,9 +54,6 @@ void GameStateHandler::SerializeGameState(vector<Tile> map, vector<Unit> units, 
   ph.OverwriteOutputs(game_turn);
 
   std::cout << game_turn.DebugString() << std::endl;
-
-  // Delete all proto stuff.
-  google::protobuf::ShutdownProtobufLibrary();
 
   return;
 }

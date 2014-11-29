@@ -29,7 +29,7 @@ int Unit::moves_left() {
   return m_moves_left;
 }
 
-int Unit::player_id() {
+int Unit::player_id() const {
   return m_player_id;
 }
 

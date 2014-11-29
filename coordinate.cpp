@@ -8,11 +8,11 @@
 
 // @public_functions
 // @getters
-int Coordinate::x() {
+int Coordinate::x() const {
   return m_x;
 }
 
-int Coordinate::y() {
+int Coordinate::y() const {
   return m_y;
 }
 
